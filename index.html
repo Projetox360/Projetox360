@@ -12,7 +12,7 @@
     }
     body {
       height: 100vh;
-      background: url('sua-imagem-de-fundo.jpg'), radial-gradient(circle, #0d001a, #000);
+      background: radial-gradient(circle, #0d001a, #000);
       color: #fff;
       font-family: 'Cinzel Decorative', serif;
       display: flex;
@@ -38,21 +38,15 @@
       border-radius: 30px;
       color: white;
       cursor: pointer;
-      transition: background 0.3s, transform 0.3s ease-in-out;
+      transition: background 0.3s;
       opacity: 0;
       animation: fadeIn 2s forwards ease-in-out 2.5s;
     }
     .btn:hover {
       background: #ff3366;
-      transform: scale(1.1);
     }
     @keyframes fadeIn {
-      0% {
-        transform: translateY(-50px);
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(0);
+      to {
         opacity: 1;
       }
     }
@@ -75,11 +69,10 @@
   <audio id="introAudio" preload="auto">
     <source src="lucifer_intro.mp3" type="audio/mpeg">
     Seu navegador não suporta áudio HTML5.
-  </audio>
+  </audio>  
   <script>
     const audio = document.getElementById('introAudio');
     const audioControl = document.getElementById('audio-control');
-
     let isMuted = false;
 
     function toggleAudio() {
@@ -92,17 +85,15 @@
       audio.volume = 1.0;
       audio.play();
 
-      // Abaixar o volume gradualmente e redirecionar
       const fadeOut = setInterval(() => {
         if (audio.volume > 0.1) {
           audio.volume -= 0.02;
         } else {
           clearInterval(fadeOut);
-          window.location.href = "home.html"; // redireciona para a página principal
+          window.location.href = "login.html"; // Redirecionar para a página de login
         }
       }, 800);
     }
   </script>
 </body>
 </html>
-
