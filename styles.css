@@ -1,111 +1,71 @@
-/* Reset de margens e padding */
-* {
+/* Estilo geral */
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Cinzel Decorative', serif;
-  background: #141414;
+  background: black;
+  font-family: Arial, sans-serif;
   color: white;
 }
 
-.intro-container {
+/* Intro */
+.intro {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #000 url('assets/intro-background.jpg') no-repeat center center;
-  background-size: cover;
-  position: relative;
+  background: black;
 }
-
-.title {
+.logo-intro {
   font-size: 5em;
-  color: #e50914;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.7);
-  opacity: 0;
-  animation: fadeIn 2s forwards ease-in-out 1s;
+  color: red;
+  animation: zoom 4s ease-in-out forwards;
+}
+@keyframes zoom {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
-.enter-btn {
-  margin-top: 30px;
-  padding: 15px 40px;
-  font-size: 1.2em;
-  background: #e50914;
-  border: none;
-  border-radius: 30px;
-  color: white;
-  cursor: pointer;
-  opacity: 0;
-  animation: fadeIn 2s forwards ease-in-out 2s;
-}
-
-.enter-btn:hover {
-  background: #b20710;
-}
-
-#audio-control {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1.5em;
-  cursor: pointer;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-.login-container {
+/* Login */
+.login {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   height: 100vh;
   background: #141414;
 }
-
-.login-title {
-  font-size: 2em;
-  margin-bottom: 30px;
-}
-
-.login-form {
-  display: flex;
-  flex-direction: column;
+.login-container {
+  background: rgba(0,0,0,0.75);
+  padding: 40px;
+  border-radius: 8px;
+  text-align: center;
   width: 300px;
 }
-
-.login-form label {
-  margin-bottom: 5px;
+.login-container h1 {
+  margin-bottom: 20px;
 }
-
-.login-form input {
-  padding: 10px;
+.login-container input {
+  display: block;
+  width: 100%;
   margin-bottom: 15px;
-  background: #333;
-  color: white;
-  border: none;
-  border-radius: 5px;
-}
-
-.login-form button {
   padding: 10px;
-  background: #e50914;
-  color: white;
+  background: #333;
   border: none;
-  border-radius: 5px;
+  color: white;
+}
+.login-container button {
+  width: 100%;
+  padding: 10px;
+  background: red;
+  border: none;
+  color: white;
+  font-weight: bold;
   cursor: pointer;
 }
-
-.login-form button:hover {
-  background: #b20710;
+.signup {
+  margin-top: 15px;
+  font-size: 0.9em;
+}
+.signup a {
+  color: white;
+  text-decoration: underline;
 }
