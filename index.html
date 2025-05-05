@@ -1,17 +1,135 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Lux 360 - Intro</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>LUX 360</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+  <script src="firebase-config.js"></script>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "firebase/app";
+    import { getAnalytics } from "firebase/analytics";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBJRPUnoZv8VJ7gB5g0CDbX2JCGIXXfPt8",
+      authDomain: "lux360-d6a3d.firebaseapp.com",
+      projectId: "lux360-d6a3d",
+      storageBucket: "lux360-d6a3d.firebasestorage.app",
+      messagingSenderId: "914579732028",
+      appId: "1:914579732028:web:506cb98dd4273f38fb3539",
+      measurementId: "G-ELWZ232HDD"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: radial-gradient(circle, #000000, #0a0a0a);
+      color: white;
+      font-family: 'Cinzel Decorative', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 5em;
+      color: white;
+      font-weight: bold;
+      text-shadow: 0 0 10px white, 0 0 20px white;
+      opacity: 0;
+      animation: fadeIn 2s forwards ease-in-out 1s;
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 15px 40px;
+      font-size: 1.2em;
+      background: #ff0055;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+      opacity: 0;
+      animation: fadeIn 2s forwards ease-in-out 2.5s;
+    }
+
+    .btn:hover {
+      background: #ff3366;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    #audio-control {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+  </style>
 </head>
-<body class="intro">
-  <audio id="introAudio" autoplay>
+<body>
+  <h1>LUX 360</h1>
+  <button class="btn" onclick="startIntro()">Entrar</button>
+  <button id="audio-control" onclick="toggleAudio()">🔊</button>
+
+  <audio id="introAudio" preload="auto">
     <source src="lucifer_intro.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio HTML5.
   </audio>
 
-  <div class="logo-intro">LUX 360</div>
+  <script>
+    const audio = document.getElementById('introAudio');
+    const audioControl = document.getElementById('audio-control');
+    let isMuted = false;
 
-  <script src="script.js"></script>
+    function toggleAudio() {
+      isMuted = !isMuted;
+      audio.muted = isMuted;
+      audioControl.textContent = isMuted ? '🔇' : '🔊';
+    }
+
+    function startIntro() {
+      audio.volume = 1.0;
+      audio.play();
+
+      const fadeOut = setInterval(() => {
+        if (audio.volume > 0.1) {
+          audio.volume -= 0.02;
+        } else {
+          clearInterval(fadeOut);
+          window.location.href = "login.html"; // Redireciona para login
+        }
+      }, 500);
+    }
+  </script>
 </body>
 </html>
