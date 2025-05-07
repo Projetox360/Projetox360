@@ -1,60 +1,31 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!-- index.html --><!DOCTYPE html><html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dark Lux</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="age-verification" class="overlay">
-    <div class="popup">
-      <h2>Confirmação de Idade</h2>
-      <p>Você tem mais de 18 anos?</p>
-      <button onclick="allowAccess()">Sim</button>
-      <button onclick="denyAccess()">Não</button>
-    </div>
-  </div>
-
   <header>
     <h1>Dark Lux</h1>
-    <nav>
-      <a href="termos.html">Termos de Uso</a>
-      <a href="privacidade.html">Política de Privacidade</a>
-    </nav>
-  </header>
-
-  <main>
-    <h2>Busque por características</h2>
-    <form id="filters">
-      <label>Cor da pele: <input type="text" name="corPele"></label>
-      <label>Altura: <input type="text" name="altura"></label>
-      <label>Peso: <input type="text" name="peso"></label>
-      <label>Cor dos olhos: <input type="text" name="corOlhos"></label>
-      <label>Tamanho dos seios: <input type="text" name="tamanhoSeios"></label>
-      <label>Tamanho do bumbum: <input type="text" name="tamanhoBumbum"></label>
-      <label>Tamanho do pé: <input type="text" name="tamanhoPe"></label>
-      <label>Tamanho do pênis (aprox.): <input type="text" name="tamanhoPenis"></label>
-      <label>Local de gravação:
-        <select name="localGravacao">
-          <option>Quarto</option>
-          <option>Sala</option>
-          <option>Escritório</option>
-          <option>Banheiro</option>
-          <option>Colégio</option>
-          <option>Rua</option>
-        </select>
-      </label>
-      <button type="submit">Buscar</button>
+    <p class="sub">+18 | Acesso apenas para maiores de idade</p>
+  </header>  <section class="filter-panel">
+    <h2>Filtrar por características</h2>
+    <form id="filterForm">
+      <input type="text" name="corPele" placeholder="Cor da pele">
+      <input type="text" name="corOlhos" placeholder="Cor dos olhos">
+      <input type="text" name="altura" placeholder="Altura (ex: 1.70m)">
+      <input type="text" name="peso" placeholder="Peso (ex: 60kg)">
+      <input type="text" name="tamanhoPeito" placeholder="Tamanho dos seios">
+      <input type="text" name="tamanhoBunda" placeholder="Tamanho da bunda">
+      <input type="text" name="tamanhoPau" placeholder="Tamanho aproximado do pênis">
+      <input type="text" name="tamanhoPe" placeholder="Tamanho do pé">
+      <input type="text" name="local" placeholder="Local da gravação (ex: quarto, sala)">
+      <button type="submit">Filtrar</button>
     </form>
-
-    <div id="video-list">Resultados aparecerão aqui.</div>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Dark Lux - Todos os direitos reservados</p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+  </section>  <section class="video-section" id="videoSection">
+    <!-- Os vídeos serão carregados aqui -->
+  </section>  <footer>
+    <p>&copy; 2025 Dark Lux. Todos os direitos reservados.</p>
+  </footer>  <script src="app.js"></script></body>
 </html>
