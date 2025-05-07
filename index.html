@@ -1,4 +1,5 @@
-<!-- index.html --><!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,9 @@
   <header>
     <h1>Dark Lux</h1>
     <p class="sub">+18 | Acesso apenas para maiores de idade</p>
-  </header>  <section class="filter-panel">
+  </header>
+
+  <section class="filter-panel">
     <h2>Filtrar por características</h2>
     <form id="filterForm">
       <input type="text" name="corPele" placeholder="Cor da pele">
@@ -23,9 +26,34 @@
       <input type="text" name="local" placeholder="Local da gravação (ex: quarto, sala)">
       <button type="submit">Filtrar</button>
     </form>
-  </section>  <section class="video-section" id="videoSection">
+  </section>
+
+  <section class="upload-panel">
+    <h2>Enviar novo vídeo</h2>
+    <form id="uploadForm">
+      <input type="url" name="src" placeholder="URL do vídeo" required>
+      <input type="url" name="thumb" placeholder="URL da thumbnail" required>
+      <input type="text" name="corPele" placeholder="Cor da pele" required>
+      <input type="text" name="corOlhos" placeholder="Cor dos olhos" required>
+      <input type="text" name="altura" placeholder="Altura (ex: 1.70m)" required>
+      <input type="text" name="peso" placeholder="Peso (ex: 60kg)" required>
+      <input type="text" name="tamanhoPeito" placeholder="Tamanho dos seios" required>
+      <input type="text" name="tamanhoBunda" placeholder="Tamanho da bunda" required>
+      <input type="text" name="tamanhoPau" placeholder="Tamanho aproximado do pênis" required>
+      <input type="text" name="tamanhoPe" placeholder="Tamanho do pé" required>
+      <input type="text" name="local" placeholder="Local da gravação" required>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <section class="video-section" id="videoSection">
     <!-- Os vídeos serão carregados aqui -->
-  </section>  <footer>
+  </section>
+
+  <footer>
     <p>&copy; 2025 Dark Lux. Todos os direitos reservados.</p>
-  </footer>  <script src="app.js"></script></body>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
 </html>
