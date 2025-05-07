@@ -1,6 +1,3 @@
-// app.js
-
-// Lista simulada de vídeos com metadados
 const videos = [
   {
     id: 1,
@@ -32,7 +29,6 @@ const videos = [
   }
 ];
 
-// Função para renderizar os vídeos na tela
 function renderVideos(filtrados) {
   const section = document.getElementById("videoSection");
   section.innerHTML = "";
@@ -57,7 +53,6 @@ function renderVideos(filtrados) {
   });
 }
 
-// Função para aplicar os filtros
 document.getElementById("filterForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -73,5 +68,18 @@ document.getElementById("filterForm").addEventListener("submit", function (e) {
   renderVideos(filtrados);
 });
 
-// Renderiza todos os vídeos ao carregar
+// Adicionar vídeo manualmente
+document.getElementById("uploadForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+  const novoVideo = Object.fromEntries(formData.entries());
+  novoVideo.id = videos.length + 1;
+
+  videos.push(novoVideo);
+  alert("Vídeo enviado com sucesso!");
+  this.reset();
+  renderVideos(videos);
+});
+
 renderVideos(videos);
