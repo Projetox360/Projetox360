@@ -1,135 +1,60 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <title>LUX 360</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
-
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
-  <script src="firebase-config.js"></script>
-
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "firebase/app";
-    import { getAnalytics } from "firebase/analytics";
-
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyBJRPUnoZv8VJ7gB5g0CDbX2JCGIXXfPt8",
-      authDomain: "lux360-d6a3d.firebaseapp.com",
-      projectId: "lux360-d6a3d",
-      storageBucket: "lux360-d6a3d.firebasestorage.app",
-      messagingSenderId: "914579732028",
-      appId: "1:914579732028:web:506cb98dd4273f38fb3539",
-      measurementId: "G-ELWZ232HDD"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  </script>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      height: 100vh;
-      background: radial-gradient(circle, #000000, #0a0a0a);
-      color: white;
-      font-family: 'Cinzel Decorative', serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
-    }
-
-    h1 {
-      font-size: 5em;
-      color: white;
-      font-weight: bold;
-      text-shadow: 0 0 10px white, 0 0 20px white;
-      opacity: 0;
-      animation: fadeIn 2s forwards ease-in-out 1s;
-    }
-
-    .btn {
-      margin-top: 30px;
-      padding: 15px 40px;
-      font-size: 1.2em;
-      background: #ff0055;
-      border: none;
-      border-radius: 30px;
-      color: white;
-      cursor: pointer;
-      transition: background 0.3s;
-      opacity: 0;
-      animation: fadeIn 2s forwards ease-in-out 2.5s;
-    }
-
-    .btn:hover {
-      background: #ff3366;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-
-    #audio-control {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1.5em;
-      cursor: pointer;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dark Lux</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <h1>LUX 360</h1>
-  <button class="btn" onclick="startIntro()">Entrar</button>
-  <button id="audio-control" onclick="toggleAudio()">🔊</button>
+  <div id="age-verification" class="overlay">
+    <div class="popup">
+      <h2>Confirmação de Idade</h2>
+      <p>Você tem mais de 18 anos?</p>
+      <button onclick="allowAccess()">Sim</button>
+      <button onclick="denyAccess()">Não</button>
+    </div>
+  </div>
 
-  <audio id="introAudio" preload="auto">
-    <source src="lucifer_intro.mp3" type="audio/mpeg">
-    Seu navegador não suporta áudio HTML5.
-  </audio>
+  <header>
+    <h1>Dark Lux</h1>
+    <nav>
+      <a href="termos.html">Termos de Uso</a>
+      <a href="privacidade.html">Política de Privacidade</a>
+    </nav>
+  </header>
 
-  <script>
-    const audio = document.getElementById('introAudio');
-    const audioControl = document.getElementById('audio-control');
-    let isMuted = false;
+  <main>
+    <h2>Busque por características</h2>
+    <form id="filters">
+      <label>Cor da pele: <input type="text" name="corPele"></label>
+      <label>Altura: <input type="text" name="altura"></label>
+      <label>Peso: <input type="text" name="peso"></label>
+      <label>Cor dos olhos: <input type="text" name="corOlhos"></label>
+      <label>Tamanho dos seios: <input type="text" name="tamanhoSeios"></label>
+      <label>Tamanho do bumbum: <input type="text" name="tamanhoBumbum"></label>
+      <label>Tamanho do pé: <input type="text" name="tamanhoPe"></label>
+      <label>Tamanho do pênis (aprox.): <input type="text" name="tamanhoPenis"></label>
+      <label>Local de gravação:
+        <select name="localGravacao">
+          <option>Quarto</option>
+          <option>Sala</option>
+          <option>Escritório</option>
+          <option>Banheiro</option>
+          <option>Colégio</option>
+          <option>Rua</option>
+        </select>
+      </label>
+      <button type="submit">Buscar</button>
+    </form>
 
-    function toggleAudio() {
-      isMuted = !isMuted;
-      audio.muted = isMuted;
-      audioControl.textContent = isMuted ? '🔇' : '🔊';
-    }
+    <div id="video-list">Resultados aparecerão aqui.</div>
+  </main>
 
-    function startIntro() {
-      audio.volume = 1.0;
-      audio.play();
+  <footer>
+    <p>&copy; 2025 Dark Lux - Todos os direitos reservados</p>
+  </footer>
 
-      const fadeOut = setInterval(() => {
-        if (audio.volume > 0.1) {
-          audio.volume -= 0.02;
-        } else {
-          clearInterval(fadeOut);
-          window.location.href = "login.html"; // Redireciona para login
-        }
-      }, 500);
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
